@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400');
+
+.class-todos-button {
+    display: inline-flex;
+    height: 35px;
+    width: 120px;
+    border: 2px solid #BFC0C0;
+    color: #BFC0C0;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: .8em;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #2D3142;
+    transition: all .5s;
+  }
+
+
+.class-todos-button:hover {
+  color: goldenrod;
+  border-color: goldenrod;
+  cursor: pointer;
+  
+}
+
+body {
+  background-color: #2D3142;
+  font-family: 'ralway';
+}
+
+.input {
+
+width: 250px;
+height: 31px;
+font-size: .8em;  
+text-align: center ;
+color: gold;
+background-color: #0b0c13;
+border-color:  #BFC0C0;
+outline: none;
+}
+
+.small-input {
+  width: 45px;
+  height: 31px;
+  font-size: .8em;
+  background-color:  #2D3142;
+  color: gold;
+  text-align: center;
+  outline: none;
+  border-color: #BFC0C0;
+}
+
+
+
+.todo-form {
+  display: flex;
+  align-content: center;
+  min-width: 100vw;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.one {
+  align-self: center;
+  
+}
+
+.two {
+  margin: 10px 0 10px 0;
+}
+
+.three {
+  margin: 10px 0 10px 0;
+}
+
+.four{
+  margin: 10px 0 0 0;
+}
+
+.display {
+  margin-right: 15px;
+}
+
+.heading {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.header {
+  color: #BFC0C0;
+  font-size: 6rem;
+  letter-spacing: 2.5px;
+}
+
+.list-wrapper {
+  display: flex;
+  max-height: 400px;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+ul {
+  margin: auto;
+}
+li {
+  font-size: 2.5rem;
+  color: goldenrod;
+  letter-spacing: 1.5px;
+  list-style: none;
+  width: 50%;
+  display: inline-block;
+
+}
+ 

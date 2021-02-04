@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Practical Javascripts</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+  <div class="todo-form">
+  <div class="one">
+    <button class="class-todos-button diplay" id="display-todos-button">Display</button>
+  <button class="class-todos-button toggle" id="toggle-all-button">Toggle All</button> 
+  </div>
+  <div class="two">
+  <button class="class-todos-button" id="add-button">Add</button> 
+  <input type="text" placeholder="What needs to be done" id="add-input" class="input"> 
+  </div>
+  <div class="three">
+  <button id="edit-button" class="class-todos-button">Edit</button>
+  <input type="text" placeholder="#"id="edit-position-input" class='small-input'>
+  <input type="text" placeholder="What needs to be edited" id="edit-text-input" class="input"> 
+  </div>
+  <div class="four">
+  <button id='remove-button' class="class-todos-button remove">Remove</button>
+  <input type="text" placeholder="#" id="remove-input" class="small-input remove">
+  <button class="class-todos-button" id="toggle-button">Toggle</button>
+  <input type="text" placeholder="#" id="toggle-input" class="small-input toggle">
+    </div>
+  </div>
+<div class="heading">
+  <h1 class="header">TODO LIST</h1>
+</div>
+<div class="list-wrapper">
+  <ul id="todos-ul">
+  </ul>
+</div>
+  <script>
+   var todos = [
+          {todoText: 'Item 1', completed: false}, 
+          {todoText: 'Item 2', completed: false}, 
+          {todoText: 'Item 3', completed: false}
+        ];
+
+        displayTodos();
+     
+    
+    function add() {
+      var initialTodoText = addInput.value;
+      todos.push({todoText: initialTodoText, completed: false});
+      addInput.value = '';
+      displayTodos()
+    }
+    
+   function edit() {
+      var position = editPositionInput.value;
+      var newTodoText = editTextInput.value;
+      todos[position].todoText = newTodoText;
+      editPositionInput.value = '';
+      editTextInput.value = '';
+      displayTodos()
+    } 
+    
+    function remove() {
+      var item = removeInput.value;
+      todos.splice(item, 1);
+      removeInput.value = '';
+      displayTodos();
+    }
+    
+    function toggle() {
+     var position = toggleInput.value;
+      if(todos[position].completed === false) {
+        todos[position].completed = true
+      }
+      else {
+        todos[position].completed = false
+      }
+      toggleInput.value = '';
+      displayTodos();
+    }
+
+    function displayTodos() {
+      var todosUl = document.getElementById('todos-ul');
+      todosUl.innerHTML = '';
+      for(let i = 0 ; i < todos.length; i++) {
+        var todosLi = document.createElement('li');
+        if(todos[i].completed === true){
+          todosLi.innerText = ('[X] ' + todos[i].todoText);
+        } else {
+          todosLi.innerText = ('[ ] ' + todos[i].todoText);
+        }
+        todosUl.appendChild(todosLi);
+        
+      }
+    }
+   
+    function toggleAll() { 
+      var completedTodos = 0;
+    for(i = 0; i < todos.length; i++) {
+        if(todos[i].completed === true) {
+          completedTodos++;
+        } 
+      }
+       if(completedTodos === todos.length) {
+        for(let i = 0; i < todos.length; i++) {
+          todos[i].completed = false;
+        }
+      } else{
+        for(let i = 0; i < todos.length; i++) {
+        todos[i].completed = true;
+        }
+      }
+      displayTodos();
+    }
+
+    var displayTodosButton = document.getElementById('display-todos-button');
+    displayTodosButton.addEventListener('click', displayTodos);
+    
+    var toggleAllButton = document.getElementById('toggle-all-button');
+    toggleAllButton.addEventListener('click', toggleAll);
+    
+    var addButton = document.getElementById('add-button');
+    var addInput = document.getElementById('add-input');
+    addButton.addEventListener('click', add);
+    
+    var editButton = document.getElementById('edit-button');
+    var editPositionInput = document.getElementById('edit-position-input');
+    var editTextInput = document.getElementById('edit-text-input');
+    editButton.addEventListener('click', edit);
+
+    var removeButton = document.getElementById('remove-button');
+    var removeInput = document.getElementById('remove-input');
+    removeButton.addEventListener('click', remove);
+
+    var toggleButton = document.getElementById('toggle-button');
+    var toggleInput = document.getElementById('toggle-input');
+    toggleButton.addEventListener('click', toggle);
+  </script>
+</body>
+</html>
